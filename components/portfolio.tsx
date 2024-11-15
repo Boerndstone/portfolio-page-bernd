@@ -15,7 +15,7 @@ import { Code, Github, Linkedin, Mail, Send } from "lucide-react";
 const skills = [
   "HTML",
   "CSS",
-  "SASS",
+  "SCSS",
   "Bootstrap",
   "Tailwind",
   "JavaScript",
@@ -35,9 +35,10 @@ const projects = [
     link: "https://www.munichclimbs.de",
   },
   {
-    title: "Task Management App",
-    description: "A React-based task manager with drag-and-drop functionality.",
-    link: "#",
+    title: "Wingtzun München",
+    description:
+      "Wingtzun Kampfkunstschule in München. Verwendete Technologien: <br />HTML, SCSS, Bootstrap, Gulp",
+    link: "https://wingtzun-muenchen.de/",
   },
   {
     title: "Weather Dashboard",
@@ -156,7 +157,7 @@ export function PortfolioComponent() {
           </div>
         </section>
 
-        <section id="contact" className="py-16">
+        {/* <section id="contact" className="py-16">
           <h2 className="text-3xl font-bold mb-8 text-center">
             Kontakt aufnehmen
           </h2>
@@ -178,14 +179,25 @@ export function PortfolioComponent() {
               </form>
             </CardContent>
           </Card>
+        </section> */}
+
+        <section id="contact" className="py-16">
+          <h2 className="text-3xl font-bold mb-8 text-center">
+            Kontakt aufnehmen
+          </h2>
+          <Card className="max-w-md mx-auto">
+            <CardContent className="pt-6">
+              <p className="text-center">info@berndullmann.de</p>
+            </CardContent>
+          </Card>
         </section>
       </main>
 
       <footer className="bg-muted py-6">
         <div className="container mx-auto px-4 text-center text-muted-foreground">
           <p>
-            &copy; {new Date().getFullYear()} Bernd Ullmann. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} Bernd Ullmann. Alle Rechte
+            vorbehalten.
           </p>
         </div>
       </footer>
