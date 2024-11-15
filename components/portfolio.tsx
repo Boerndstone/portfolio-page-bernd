@@ -8,9 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Code, Github, Linkedin, Mail, Send } from "lucide-react";
+import { Code, Github, Linkedin, Mail } from "lucide-react";
 
 const skills = [
   "HTML",
