@@ -38,17 +38,6 @@ const projects = [
       "Wingtzun Kampfkunstschule in München. Verwendete Technologien: <br />HTML, SCSS, Bootstrap, Gulp",
     link: "https://wingtzun-muenchen.de/",
   },
-  {
-    title: "Weather Dashboard",
-    description: "A weather app using OpenWeatherMap API and React.",
-    link: "#",
-  },
-  {
-    title: "Portfolio Website",
-    description:
-      "A responsive portfolio website built with Next.js and Tailwind CSS.",
-    link: "#",
-  },
 ];
 
 export function PortfolioComponent() {
