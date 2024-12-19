@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
+
 import {
   Card,
   CardContent,
@@ -9,34 +11,23 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Code, Github, Linkedin, Mail } from "lucide-react";
+import skills from "../store/skills";
+import { ContactForm } from "./features/contact-form";
 
-const skills = [
-  "HTML",
-  "CSS",
-  "SCSS",
-  "Bootstrap",
-  "Tailwind",
-  "JavaScript",
-  "Stimulus",
-  "React",
-  "Node.js",
-  "TypeScript",
-  "PHP",
-  "MySQL",
-  "Symfony",
-];
 const projects = [
   {
     title: "Munichclimbs",
     description:
       "Klettergebiete rund um München. Verwendete Technologien: <br />Symfony, MySQL, Stimulus, Bootstrap",
     link: "https://www.munichclimbs.de",
+    image: "/images/munichclimbs.jpg",
   },
   {
     title: "Wingtzun München",
     description:
       "Wingtzun Kampfkunstschule in München. Verwendete Technologien: <br />HTML, SCSS, Bootstrap, Gulp",
     link: "https://wingtzun-muenchen.de/",
+    image: "/images/wingtzun.jpg",
   },
 ];
 
@@ -95,10 +86,17 @@ export function PortfolioComponent() {
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </Button>
-              <Button variant="outline" size="icon">
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
-              </Button>
+              <a
+                href="https://www.linkedin.com/in/bernd-ullmann-458aab1aa/"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="button"
+              >
+                <Button variant="outline" size="icon">
+                  <Linkedin className="h-5 w-5" />
+                  <span className="sr-only">LinkedIn</span>
+                </Button>
+              </a>
               <Button variant="outline" size="icon">
                 <Mail className="h-5 w-5" />
                 <span className="sr-only">Email</span>
@@ -127,8 +125,20 @@ export function PortfolioComponent() {
             {projects.map((project, index) => (
               <Card key={index}>
                 <CardHeader>
-                  <CardTitle>{project.title}</CardTitle>
+                  <CardTitle className="text-2xl mb-5">
+                    {project.title}
+                  </CardTitle>
+                  {project.image && (
+                    <Image
+                      src={project.image}
+                      width={1000}
+                      height={500}
+                      alt="Picture of the author"
+                      className="py-5"
+                    />
+                  )}
                   <CardDescription
+                    className="text-base mb-5"
                     dangerouslySetInnerHTML={{ __html: project.description }}
                   />
                 </CardHeader>
@@ -144,39 +154,8 @@ export function PortfolioComponent() {
           </div>
         </section>
 
-        {/* <section id="contact" className="py-16">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            Kontakt aufnehmen
-          </h2>
-          <Card className="max-w-md mx-auto">
-            <CardContent className="pt-6">
-              <form className="space-y-4">
-                <div>
-                  <Input placeholder="Your Name" />
-                </div>
-                <div>
-                  <Input type="email" placeholder="Your Email" />
-                </div>
-                <div>
-                  <Textarea placeholder="Your Message" />
-                </div>
-                <Button className="w-full">
-                  <Send className="mr-2 h-4 w-4" /> Send Message
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-        </section> */}
-
         <section id="contact" className="py-16">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            Kontakt aufnehmen
-          </h2>
-          <Card className="max-w-md mx-auto">
-            <CardContent className="pt-6">
-              <p className="text-center">info@berndullmann.de</p>
-            </CardContent>
-          </Card>
+          <ContactForm />
         </section>
       </main>
 
