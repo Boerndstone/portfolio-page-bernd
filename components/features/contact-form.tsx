@@ -15,7 +15,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Input } from "@/components/ui/input";
-import { Check, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import { formSchema } from "@/lib/schema";
 
 export function ContactForm() {
