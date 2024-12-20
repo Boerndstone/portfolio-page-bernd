@@ -1,5 +1,3 @@
-"use client";
-
 import { z } from 'zod'
 import { formSchema } from './schema';
 import { Resend } from 'resend';
