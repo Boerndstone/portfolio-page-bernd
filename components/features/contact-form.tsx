@@ -27,6 +27,7 @@ import { Input } from "@/components/ui/input";
 import { Send } from "lucide-react";
 
 import { formSchema } from "@/lib/schema";
+import { send } from "@/lib/email";
 
 export function ContactForm() {
   const form = useForm<z.infer<typeof formSchema>>({
