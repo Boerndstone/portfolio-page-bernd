@@ -1,12 +1,22 @@
 import { z } from 'zod'
 
 export const formSchema = z.object({
-  firstname: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  firstname: z.string().nonempty({
+    message: "Bitte geben Sie einen Vornamen ein.",
+  }).min(2, {
+    message: "Der Vorname muss mindestens 2 Zeichen lang sein.",
   }),
-  lastname: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  lastname: z.string().nonempty({
+    message: "Bitte geben Sie einen Nachnamen ein.",
+  }).min(2, {
+    message: "Der Nachname muss mindestens 2 Zeichen lang sein.",
   }),
-  email: z.string().email(),
-  message: z.string().min(2),
+  email: z.string().nonempty({
+    message: "Bitte geben Sie eine E-Mail-Adresse ein.",
+  }).email(
+    { message: "Bitte geben Sie eine gültige E-Mail-Adresse ein." }
+  ),
+  message: z.string().nonempty({
+    message: "Bitte geben Sie eine Nachricht ein und beschreiben Ihr Anliegen.",
+  }).min(2),
 });
