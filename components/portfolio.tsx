@@ -13,6 +13,7 @@ import {
 import { Code, Github, Linkedin, Mail } from "lucide-react";
 import skills from "../store/skills";
 import { ContactForm } from "./features/contact-form";
+import CookieDisclaimer from "./CookieDisclaimer";
 
 const projects = [
   {
@@ -97,10 +98,15 @@ export function PortfolioComponent() {
                   <span className="sr-only">LinkedIn</span>
                 </Button>
               </a>
-              <Button variant="outline" size="icon">
-                <Mail className="h-5 w-5" />
-                <span className="sr-only">Email</span>
-              </Button>
+              <a
+                href="#contact"
+                className="hover:text-primary transition-colors"
+              >
+                <Button variant="outline" size="icon">
+                  <Mail className="h-5 w-5" />
+                  <span className="sr-only">Email</span>
+                </Button>
+              </a>
             </div>
           </div>
         </section>
@@ -167,6 +173,7 @@ export function PortfolioComponent() {
           </p>
         </div>
       </footer>
+      <CookieDisclaimer />
     </div>
   );
 }

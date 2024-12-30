@@ -44,7 +44,6 @@ export function ContactForm() {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     send(values);
-    console.log(values);
   }
 
   return (
