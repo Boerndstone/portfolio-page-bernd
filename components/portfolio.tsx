@@ -1,5 +1,5 @@
 "use client";
-
+import { Navbar } from "@/components/navbar";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
@@ -12,7 +12,8 @@ import {
 } from "@/components/ui/card";
 import { Code, Github, Linkedin, Mail } from "lucide-react";
 import skills from "../store/skills";
-import { ContactForm } from "./features/contact-form";
+import { ContactForm } from "@/components/contact-form";
+import { Footer } from "@/components/footer";
 import CookieDisclaimer from "./CookieDisclaimer";
 
 const projects = [
@@ -34,59 +35,25 @@ const projects = [
 
 export function PortfolioComponent() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <header className="sticky top-0 z-10 backdrop-blur-sm bg-background/80 border-b">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold">BU</h1>
-          <nav>
-            <ul className="flex space-x-4">
-              <li>
-                <a
-                  href="#about"
-                  className="hover:text-primary transition-colors"
-                >
-                  Über mich
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#skills"
-                  className="hover:text-primary transition-colors"
-                >
-                  Tech-Stack
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#projects"
-                  className="hover:text-primary transition-colors"
-                >
-                  Projekte
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  className="hover:text-primary transition-colors"
-                >
-                  Kontakt
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-
-      <main className="container mx-auto px-4 py-8">
-        <section id="about" className="py-16 md:py-24">
+    <main className="min-h-screen">
+      <Navbar />
+      <div className="container mx-auto px-4 py-12">
+        <section id="about" className="py-16">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-4">Bernd Ullmann</h2>
             <p className="text-xl mb-6">Full Stack Webentwickler.</p>
             <div className="flex justify-center space-x-4">
-              <Button variant="outline" size="icon">
-                <Github className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
-              </Button>
+              <a
+                href="https://github.com/Boerndstone"
+                target="_blank"
+                rel="noopener noreferrer"
+                role="button"
+              >
+                <Button variant="outline" size="icon">
+                  <Github className="h-5 w-5" />
+                  <span className="sr-only">GitHub</span>
+                </Button>
+              </a>
               <a
                 href="https://www.linkedin.com/in/bernd-ullmann-458aab1aa/"
                 target="_blank"
@@ -163,17 +130,9 @@ export function PortfolioComponent() {
         <section id="contact" className="py-16">
           <ContactForm />
         </section>
-      </main>
-
-      <footer className="bg-muted py-6">
-        <div className="container mx-auto px-4 text-center text-muted-foreground">
-          <p>
-            &copy; {new Date().getFullYear()} Bernd Ullmann. Alle Rechte
-            vorbehalten.
-          </p>
-        </div>
-      </footer>
+      </div>
+      <Footer />
       <CookieDisclaimer />
-    </div>
+    </main>
   );
 }

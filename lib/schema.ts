@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const formSchema = z.object({
+export const ContactFormSchema = z.object({
   firstname: z.string().nonempty({
     message: "Bitte geben Sie einen Vornamen ein.",
   }).min(2, {
@@ -20,3 +20,5 @@ export const formSchema = z.object({
     message: "Bitte geben Sie eine Nachricht ein und beschreiben Ihr Anliegen.",
   }).min(2),
 });
+
+export type ContactFormValues = z.infer<typeof ContactFormSchema>
