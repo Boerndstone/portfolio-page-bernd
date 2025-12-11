@@ -41,6 +41,13 @@ export function PortfolioComponent() {
         <section id="about" className="py-16">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-4">Bernd Ullmann</h2>
+            <Image 
+              src="/images/bernd.jpg" 
+              alt="Bernd Ullmann" 
+              width={160} 
+              height={160} 
+              className="w-40 h-40 rounded-full mx-auto mb-4" 
+            />
             <p className="text-xl mb-6">Full Stack Webentwickler.</p>
             <div className="flex justify-center space-x-4">
               <a

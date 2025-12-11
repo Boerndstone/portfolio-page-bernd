@@ -7,10 +7,11 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "#about", label: "Über mich" },
-  { href: "#skills", label: "Tech-Stack" },
-  { href: "#projects", label: "Projekte" },
-  { href: "#contact", label: "Kontakt" },
+  { href: "/#about", label: "Über mich" },
+  { href: "/#skills", label: "Tech-Stack" },
+  { href: "/#projects", label: "Projekte" },
+  { href: "/#contact", label: "Kontakt" },
+  // { href: "/playground", label: "Playground" },
 ];
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,8 +59,8 @@ export function Navbar() {
   // Track active section based on scroll position
   useEffect(() => {
     const sectionIds = navLinks
-      .map((link) => link.href.replace("#", ""))
-      .filter((id) => id !== "");
+      .map((link) => link.href.replace("/#", "").replace("#", ""))
+      .filter((id) => id !== "" && !id.startsWith("/"));
 
     const observerOptions = {
       root: null,
@@ -126,8 +127,8 @@ export function Navbar() {
               {navLinks.map((link) => {
                 const isActive =
                   (link.href === "#" && activeSection === "") ||
-                  (link.href !== "#" &&
-                    activeSection === link.href.substring(1));
+                  (link.href.includes("#") &&
+                    activeSection === link.href.split("#")[1]);
 
                 return (
                   <li key={link.label}>
@@ -187,7 +188,8 @@ export function Navbar() {
             {navLinks.map((link) => {
               const isActive =
                 (link.href === "#" && activeSection === "") ||
-                (link.href !== "#" && activeSection === link.href.substring(1));
+                (link.href.includes("#") &&
+                  activeSection === link.href.split("#")[1]);
 
               return (
                 <li key={link.label}>
