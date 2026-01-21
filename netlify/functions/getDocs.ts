@@ -1,11 +1,21 @@
 import { Handler } from '@netlify/functions'
-import { prisma } from '../../lib/prisma'
+import { PrismaClient } from '@prisma/client'
 
-export const handler: Handler = async (event) => {
-  // TODO: Add auth check
-  const docs = await prisma.doc.findMany()
-  return {
-    statusCode: 200,
-    body: JSON.stringify(docs),
+const prisma = new PrismaClient()
+
+export const handler: Handler = async () => {
+  try {
+    const docs = await prisma.doc.findMany()
+    return {
+      statusCode: 200,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(docs),
+    }
+  } catch (error) {
+    console.error('Error fetching docs:', error)
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Failed to fetch docs', details: String(error) }),
+    }
   }
 }
