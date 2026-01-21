@@ -1,8 +1,22 @@
+'use client'
+
+
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Flex, Heading, Text, Link } from "@radix-ui/themes";
 
+import { useEffect, useState } from "react"
+
 export default function Home() {
+
+  const [docs, setDocs] = useState<any[]>([])
+
+  useEffect(() => {
+    fetch("/.netlify/functions/getDocs")
+      .then(res => res.json())
+      .then(setDocs)
+  }, [])
+
   return (
     <main className="min-h-screen">
       <Navbar />
@@ -20,8 +34,15 @@ export default function Home() {
     </Flex>
       </div>
       <Text size="9">The quick brown fox jumps over the lazy dog.</Text>
-
-      <Link size="1" href="/signup">Sign up</Link>
+<hr />
+      <div>
+      {docs.map(doc => (
+        <div key={doc.id}>
+          <h2>{doc.title}</h2>
+          <p>{doc.content}</p>
+        </div>
+      ))}
+    </div>
 
       <Footer />
     </main>
