@@ -1,11 +1,10 @@
 [build]
-  command = "npm run build"
+  command = "npx prisma generate && npm run build"
   publish = "out"
 
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
-  included_files = ["node_modules/.prisma/**", "node_modules/@prisma/client/**"]
 
 [functions."getDocs"]
-  external_node_modules = ["@prisma/client"]
+  external_node_modules = ["@prisma/client", "@prisma/adapter-neon"]

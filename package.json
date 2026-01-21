@@ -12,6 +12,7 @@
     "@hookform/resolvers": "^3.9.1",
     "@neondatabase/serverless": "^0.10.4",
     "@netlify/functions": "^5.1.2",
+    "@prisma/adapter-neon": "^7.2.0",
     "@prisma/client": "^6.19.2",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-label": "^2.1.1",
