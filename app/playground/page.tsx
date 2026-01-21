@@ -7,9 +7,15 @@ import { Flex, Heading, Text } from "@radix-ui/themes";
 
 import { useEffect, useState } from "react"
 
+interface Doc {
+  id: string
+  title: string
+  content: string
+}
+
 export default function Home() {
 
-  const [docs, setDocs] = useState<any[]>([])
+  const [docs, setDocs] = useState<Doc[]>([])
 
   useEffect(() => {
     fetch("/.netlify/functions/getDocs")
