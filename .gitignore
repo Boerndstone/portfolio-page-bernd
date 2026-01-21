@@ -38,3 +38,6 @@ yarn-error.log*
 next-env.d.ts
 
 /lib/generated/prisma
+
+# Local Netlify folder
+.netlify
