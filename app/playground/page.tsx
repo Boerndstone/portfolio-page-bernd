@@ -3,7 +3,7 @@
 
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { Flex, Heading, Text, Link } from "@radix-ui/themes";
+import { Flex, Heading, Text } from "@radix-ui/themes";
 
 import { useEffect, useState } from "react"
 
