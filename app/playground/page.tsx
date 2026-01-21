@@ -4,7 +4,6 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Flex, Heading, Text } from "@radix-ui/themes";
-
 import { useEffect, useState } from "react"
 
 interface Doc {
@@ -20,7 +19,11 @@ export default function Home() {
   useEffect(() => {
     fetch("/.netlify/functions/getDocs")
       .then(res => res.json())
-      .then(setDocs)
+      .then(data => {
+        if (Array.isArray(data)) setDocs(data)
+        else console.error("Unexpected response:", data)
+      })
+      .catch(err => console.error(err))
   }, [])
 
   return (
@@ -41,7 +44,7 @@ export default function Home() {
       </div>
       <Text size="9">The quick brown fox jumps over the lazy dog.</Text>
 <hr />
-      <div>
+<div>
       {docs.map(doc => (
         <div key={doc.id}>
           <h2>{doc.title}</h2>

@@ -1,21 +1,17 @@
-import { Handler } from '@netlify/functions'
-import { PrismaClient } from '@prisma/client'
+import { prisma } from '../../lib/prisma'
 
-const prisma = new PrismaClient()
-
-export const handler: Handler = async () => {
+export const handler = async () => {
   try {
     const docs = await prisma.doc.findMany()
     return {
       statusCode: 200,
-      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(docs),
     }
-  } catch (error) {
-    console.error('Error fetching docs:', error)
+  } catch (err) {
+    console.error(err)
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Failed to fetch docs', details: String(error) }),
+      body: JSON.stringify({ error: 'Failed to fetch docs', details: err instanceof Error ? err.message : String(err) }),
     }
   }
 }
