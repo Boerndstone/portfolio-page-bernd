@@ -47,6 +47,7 @@ export function PortfolioComponent() {
               width={160} 
               height={160} 
               className="w-40 h-40 rounded-full mx-auto mb-4" 
+              priority
             />
             <p className="text-xl mb-6">Full Stack Webentwickler.</p>
             <div className="flex justify-center space-x-4">
