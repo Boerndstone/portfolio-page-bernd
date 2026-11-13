@@ -9,7 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const result = ContactFormSchema.safeParse(req.body);
 
     if (!result.success) {
-      const errorMessage = result.error.errors.map((err) => `${err.path.join(".")}: ${err.message}`).join(", ");
+      const errorMessage = result.error.issues.map((err) => `${err.path.join(".")}: ${err.message}`).join(", ");
       return res.status(400).json({ error: `Validation failed: ${errorMessage}` });
     }
 

@@ -15,7 +15,7 @@ export async function sendEmail(data: ContactFormValues) {
 
   // If validation fails, throw an error with the validation message
   if (!result.success) {
-    const errorMessage = result.error.errors.map((err) => `${err.path.join(".")}: ${err.message}`).join(", ")
+    const errorMessage = result.error.issues.map((err) => `${err.path.join(".")}: ${err.message}`).join(", ")
 
     throw new Error(`Validation failed: ${errorMessage}`)
   }

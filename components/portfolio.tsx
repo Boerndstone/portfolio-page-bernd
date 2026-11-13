@@ -19,10 +19,40 @@ import CookieDisclaimer from "./CookieDisclaimer";
 const projects = [
   {
     title: "Munichclimbs",
-    description:
-      "Klettergebiete rund um München. Verwendete Technologien: <br />Symfony, MySQL, Stimulus, Bootstrap",
+    description: "Munichclimbs ist eine Full-Stack-Kletterplattform auf Basis von Symfony und PHP. Sie verbindet ein responsives, Twig-basiertes Frontend mit einem Symfony-Backoffice und einer API. Als Datenbank kommt MySQL zum Einsatz.",
     link: "https://www.munichclimbs.de",
     image: "/images/munichclimbs.jpg",
+    technologies: [
+      {
+        category: "Backend",
+        items: ["PHP 8.2+", "Symfony 7.4", "Doctrine ORM 3", "API Platform 4"],
+      },
+      {
+        category: "Frontend",
+        items: ["Twig 3", "Symfony UX", "Twig Components", "Stimulus", "Turbo"],
+      },
+      {
+        category: "UI and assets",
+        items: [
+          "Tailwind CSS 4",
+          "Custom shadcn-style Twig components",
+          "Lucide icons",
+          "Webpack Encore",
+        ],
+      },
+      {
+        category: "Interactive features",
+        items: ["Leaflet", "Marker clustering", "Chart.js", "LightGallery"],
+      },
+      {
+        category: "Backoffice",
+        items: ["Symfony EasyAdmin"],
+      },
+      {
+        category: "Data and local environment",
+        items: ["MySQL 8", "Docker", "Apache"],
+      },
+    ],
   },
   {
     title: "Wingtzun München",
@@ -109,21 +139,28 @@ export function PortfolioComponent() {
                   <CardTitle className="text-2xl mb-5">
                     {project.title}
                   </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription
+                    className="text-base text-black mb-5"
+                    dangerouslySetInnerHTML={{ __html: project.description }}
+                  />
                   {project.image && (
                     <Image
                       src={project.image}
                       width={1000}
                       height={500}
                       alt="Picture of the author"
-                      className="py-5"
+                      className="my-5"
                     />
                   )}
-                  <CardDescription
-                    className="text-base mb-5"
-                    dangerouslySetInnerHTML={{ __html: project.description }}
-                  />
-                </CardHeader>
-                <CardContent>
+                  <ul className="project-technologies my-5">
+                    {project.technologies?.map(({ category, items }) => (
+                      <li key={category}>
+                        <strong>{category}:</strong> {items.join(", ")}
+                      </li>
+                    ))}
+                  </ul>
                   <Button variant="outline" asChild>
                     <a href={project.link} target="_blank">
                       zur Webseite
