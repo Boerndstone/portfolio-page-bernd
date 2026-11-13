@@ -11,7 +11,6 @@ const navLinks = [
   { href: "/#skills", label: "Tech-Stack" },
   { href: "/#projects", label: "Projekte" },
   { href: "/#contact", label: "Kontakt" },
-  { href: "/recipies", label: "Rezepte" },
 ];
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
